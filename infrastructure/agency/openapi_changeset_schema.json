@@ -1,82 +1,45 @@
 {
-  "type": "OBJECT",
-  "description": "Describes a set of file changes: additions, removals, and modifications.",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Changeset",
+  "type": "object",
   "properties": {
     "summary": {
-      "type": "STRING",
-      "description": "Descriptive summary of files added, removed, or modified. Explain what was done and why in one sentence for each file."
+      "type": "string",
+      "description": "Descriptive summary of the changes."
     },
     "additions": {
-      "type": "ARRAY",
-      "description": "List of files added.",
+      "type": "array",
       "items": {
-        "type": "OBJECT",
-        "description": "Represents an added file.",
+        "type": "object",
         "properties": {
-          "path": {
-            "type": "STRING",
-            "description": "Relative path to the file within the project."
-          },
-          "content": {
-            "type": "STRING",
-            "description": "Content of the file. Include the ENTIRE file content, not just the changes. Don't forget imports, etc."
-          }
+          "path": { "type": "string", "description": "Relative file path" },
+          "content": { "type": "string", "description": "Full file content" }
         },
-        "required": [
-          "path",
-          "content"
-        ]
+        "required": ["path", "content"]
       }
     },
     "removals": {
-      "type": "ARRAY",
-      "description": "List of files removed.",
+      "type": "array",
       "items": {
-        "type": "OBJECT",
-        "description": "Represents a removed file.",
+        "type": "object",
         "properties": {
-          "path": {
-            "type": "STRING",
-            "description": "Relative path to the file within the project."
-          },
-          "content": {
-            "type": "STRING",
-            "description": "Content of the file before removal. Include the ENTIRE file content."
-          }
+          "path": { "type": "string", "description": "Relative file path" },
+          "content": { "type": "string", "description": "Full file content" }
         },
-        "required": [
-          "path",
-          "content"
-        ]
+        "required": ["path", "content"]
       }
     },
     "modifications": {
-      "type": "ARRAY",
-      "description": "List of files modified.",
+      "type": "array",
       "items": {
-        "type": "OBJECT",
-        "description": "Represents a modified file.",
+        "type": "object",
         "properties": {
-          "path": {
-            "type": "STRING",
-            "description": "Relative path to the file within the project."
-          },
-          "content": {
-            "type": "STRING",
-            "description": "New content of the file. Include the ENTIRE file content, not just the changes. Don't forget imports, etc."
-          }
+          "path": { "type": "string", "description": "Relative file path" },
+          "content": { "type": "string", "description": "Full file content" }
         },
-        "required": [
-          "path",
-          "content"
-        ]
+        "required": ["path", "content"]
       }
     }
   },
-  "required": [
-    "summary",
-    "additions",
-    "removals",
-    "modifications"
-  ]
+  "required": ["summary", "additions", "removals", "modifications"]
 }

@@ -38,6 +38,11 @@ services:
     class: application.agency.use_cases.implement_changeset.ImplementChangesetUseCase
     arguments: ['@pyperclip', '@agency.workflow.implement_changeset']
 
+  # Use Case: Copy Schema to Clipboard
+  agency.copy_schema_use_case:
+    class: application.agency.use_cases.copy_schema.CopySchemaUseCase
+    arguments: ['@pyperclip']
+
 ################################################################################################
 # Prompt Adapters
 ################################################################################################

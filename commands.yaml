@@ -96,3 +96,6 @@ commands:
       verbose:
         help: "Print verbose debug output to the console"
         flag: true
+  schema:
+    help: "Copy the contents of openapi_changeset_schema.json to the clipboard."
+    target: "@agency.copy_schema_use_case.execute"
