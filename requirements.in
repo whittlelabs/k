@@ -1,0 +1,17 @@
+# To update this file, run:
+# pip-compile requirements.in --strip-extras --output-file requirements.txt
+anthropic
+boto3
+faiss-cpu
+langchain
+langchain-community
+langchain-openai
+langchain-anthropic
+langgraph
+openai
+pathspec
+pydantic
+pyperclip
+pytest
+python-dotenv
+PyYAML

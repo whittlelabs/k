@@ -1,0 +1,10 @@
+__pycache__/
+.DS_Store
+.env
+config.ini
+venv/
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+terraform.tfplan
+.k/memory.txt
