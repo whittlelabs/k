@@ -57,9 +57,10 @@ commands:
     aliases: ["tb"]
     help: "Build a troubleshooting prompt from a traceback on the clipboard"
     target: "@traceback.build_troubleshooting_prompt_use_case.execute"
-  pr:
-    help: "Generate pull request changes based on a prompt. Use the --copy flag to copy the generated prompt to the clipboard instead of invoking the LLM."
-    target: "@agency.create_pull_request_use_case.execute"
+  change:
+    aliases: ["c", "changeset", "pr"]
+    help: "Generate changes based on a prompt."
+    target: "@agency.create_changeset_use_case.execute"
     arguments:
       <<: *common_arguments
       followup:

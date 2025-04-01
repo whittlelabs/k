@@ -2,7 +2,7 @@ from typing import TypedDict
 from domain.filesystem.entities.document_collection import DocumentCollection
 
 
-class PullRequestWorkflowState(TypedDict):
+class ChangesetWorkflowState(TypedDict):
     """
     Workflow state for the pull request workflow.
     

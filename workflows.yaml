@@ -9,7 +9,7 @@ workflows:
     - generate_code_advice -> record_memory
     - record_memory -> END
 
-  pull_request:
+  changeset:
     - START -> get_project_path
     - get_project_path -> load_include_exclude_rules
     - get_project_path -> load_project_rules

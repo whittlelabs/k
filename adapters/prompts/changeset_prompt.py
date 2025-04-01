@@ -1,6 +1,6 @@
 from application.templating.protocols.template import TemplateProtocol
 
-class PullRequestPrompt(TemplateProtocol):
+class ChangesetPrompt(TemplateProtocol):
 
     def format(self, **kwargs):
         return f"""

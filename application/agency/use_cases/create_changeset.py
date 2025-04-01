@@ -6,9 +6,9 @@ if TYPE_CHECKING:
     from application.filesystem.protocols.clipboard import ClipboardProtocol
 
 
-class CreatePullRequestUseCase:
+class CreateChangesetUseCase:
     """
-    Use case for creating a pull request by invoking the pull request workflow.
+    Use case for creating a changeset by invoking the changeset workflow.
     It initializes a new state dictionary with the provided prompt as the goal,
     and includes decision variables for copying the prompt,
     then passes it to the workflow's run method.
@@ -27,10 +27,10 @@ class CreatePullRequestUseCase:
                 verbose: bool = False,
                 followup: bool = False) -> None:
         """
-        Executes the pull request creation process.
+        Executes the changeset creation process.
         
         Parameters:
-          - prompt: The prompt text to generate the pull request changes.
+          - prompt: The prompt text to generate the changeset changes.
           - stdin: If True, read the prompt from standard input.
           - copy: If True, indicate that the generated PR prompt should be copied to the clipboard instead of invoking the LLM.
           - paste: If True, read the prompt from the clipboard.
@@ -43,7 +43,7 @@ class CreatePullRequestUseCase:
         elif paste:
             prompt = self.clipboard_service.get()
         if not prompt:
-            print("\nNo prompt provided. Aborting pull request creation.\n")
+            print("\nNo prompt provided. Aborting changeset creation.\n")
             return
 
         state = {

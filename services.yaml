@@ -5,9 +5,9 @@ services:
   ################################################################################################
   
   # Use Case: Create a pull request
-  agency.create_pull_request_use_case:
-    class: application.agency.use_cases.create_pull_request.CreatePullRequestUseCase
-    arguments: ['@pyperclip','@agency.workflow.pull_request']
+  agency.create_changeset_use_case:
+    class: application.agency.use_cases.create_changeset.CreateChangesetUseCase
+    arguments: ['@pyperclip','@agency.workflow.changeset']
 
   # Use Case: Get Code Advice
   agency.get_code_advice_use_case:
@@ -49,10 +49,10 @@ services:
       services: !tagged_iterator { tag: prompt, index_by: alias }
 
   # Prompt: Pull Request
-  agency.prompt.pr:
-    class: adapters.prompts.pull_request_prompt.PullRequestPrompt
+  agency.prompt.changeset:
+    class: adapters.prompts.changeset_prompt.ChangesetPrompt
     tags:
-      - { name: prompt, alias: pr }
+      - { name: prompt, alias: changeset }
 
   # Prompt: Code Review
   agency.prompt.code_review:
@@ -85,10 +85,10 @@ services:
       workflows: '~/workflows.yaml:workflows'
 
   # Workflow: Generates a changeset for a pull request
-  agency.workflow.pull_request:
+  agency.workflow.changeset:
     class: infrastructure.agency.workflow.Workflow
     factory: ['@agency.workflow_factory', 'create']
-    arguments: ['pull_request']
+    arguments: ['changeset']
 
   # Workflow: Generates advice for a codebase
   agency.workflow.code_advice:
@@ -126,11 +126,11 @@ services:
       - { name: workflow_state, alias: code_advice }
 
   # State: Pull Request
-  agency.workflow_state.pull_request:
-    class: infrastructure.agency.states.pull_request_workflow_state.PullRequestWorkflowState
+  agency.workflow_state.changeset:
+    class: infrastructure.agency.states.changeset_workflow_state.ChangesetWorkflowState
     inject_class: true
     tags:
-      - { name: workflow_state, alias: pull_request }
+      - { name: workflow_state, alias: changeset }
 
   # State: Project Plan
   agency.workflow_state.project_plan:
@@ -215,7 +215,7 @@ services:
     class: infrastructure.agency.nodes.generate_changeset.GenerateChangeset
     arguments: 
       clipboard: '@pyperclip'
-      prompt: '@agency.prompt.pr'
+      prompt: '@agency.prompt.changeset'
       model_id: 'openai:o3-mini'
       model_config:
         reasoning_effort: 'high'

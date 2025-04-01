@@ -1,13 +1,13 @@
 # k
 
-**k** is a personal command-line interface (CLI) tool designed to streamline development workflows. It empowers you to generate pull request changesets, receive actionable code advice, create comprehensive project plans from user stories, and build troubleshooting prompts from tracebacks. Built on Clean Architecture principles, k leverages dependency injection to maintain a modular and extensible codebase.
+**k** is a personal command-line interface (CLI) tool designed to streamline development workflows. It empowers you to generate full changesets, receive actionable code advice, create comprehensive project plans from user stories, and build troubleshooting prompts from tracebacks. Built on Clean Architecture principles, k leverages dependency injection to maintain a modular and extensible codebase.
 
 ---
 
 ## Table of Contents
 
 - [k](#k)
-  - [Table of Contents](#table-of-contents)
+  - [Table of Contents](#table-of-Contents)
   - [Features](#features)
   - [Requirements](#requirements)
   - [Installation](#installation)
@@ -92,10 +92,10 @@ For subcommands:
 | **init**     | `k init`                                                                                                                       | Initializes the .k directory with default configuration templates. |
 | **get**      | `k get openai models` <br> `k get anthropic models`                                                                              | Retrieves a list of available models from OpenAI or Anthropic. |
 | **traceback**| `k traceback`                                                                                                                  | Builds a troubleshooting prompt from a traceback present in the clipboard, including source excerpts. |
-| **pr**       | `k pr [prompt] [--copy] [--paste] [--include "<pattern>"] [--followup] [--verbose]`                                           | Generates a pull request changeset based on your modifications. Use the `--include` option to override the default file selection by providing a pipe-delimited list of glob patterns (e.g., '*.yaml|*.json|*.html'). Use the **--followup** flag to append this invocation's prompt and response to a memory file for incremental updates. The **--verbose** flag provides detailed debug output during execution. |
-| **advise**   | `k advise "Refactor authentication module." [--followup] [--verbose]`                                                | Provides detailed code advice and suggestions for improvements. Use the **--followup** flag to append this invocation's prompt and response to a memory file for incremental updates. The **--verbose** flag enables verbose debug output. |
+| **change**   | `k change [prompt] [--copy] [--paste] [--include "<pattern>"] [--followup] [--verbose]`                                        | Generates a pull request changeset based on your modifications. Use the `--include` option to override the default file selection by providing a pipe-delimited list of glob patterns (e.g., '*.yaml|*.json|*.html'). Use the **--followup** flag to append this invocation's prompt and response to a memory file for incremental updates. The **--verbose** flag displays detailed debug output during execution. |
+| **advise**   | `k advise "Refactor authentication module." [--followup] [--verbose]`                                                          | Provides detailed code advice and suggestions for improvements. Use the **--followup** flag to append this invocation's prompt and response to a memory file for incremental updates. The **--verbose** flag enables verbose debug output. |
 | **plan**     | `k plan [prompt] [--copy] [--verbose]`                                                                                           | Creates a project plan by generating user stories from the provided goal. The **--verbose** flag can be used to view detailed execution logs. |
-| **implement**| `k implement [--verbose]`                                                                                                    | Implements a structured changeset read from the clipboard. The **--verbose** flag enables detailed debug output. |
+| **implement**| `k implement [--verbose]`                                                                                                        | Implements a structured changeset read from the clipboard. The **--verbose** flag enables detailed debug output during execution. |
 
 ---
 
@@ -105,9 +105,9 @@ For subcommands:
    `k init`  
    Creates a new .k directory with default templates.
 
-2. **Generate a Pull Request Changeset**  
-   `k pr "Refactor database connection logic" --verbose`  
-   Generates a detailed pull request changeset. Use the **--include** flag to override the default file selection if needed and the **--followup** flag to enable incremental updates. The **--verbose** flag displays detailed debug output.
+2. **Generate a Changeset**  
+   `k change "Refactor database connection logic" --verbose`  
+   Generates a detailed changeset. Use the **--include** flag to override the default file selection if needed and the **--followup** flag to enable incremental updates. The **--verbose** flag displays detailed debug output during execution.
 
 3. **Generate Code Advice**  
    `k advise "Optimize the caching mechanism for performance." --followup --verbose`  
@@ -123,10 +123,10 @@ For subcommands:
    Constructs a troubleshooting prompt that includes relevant file content and the original traceback.
 
 6. **Enable Verbose Output**  
-   Simply add the **--verbose** flag to any command (e.g., `k pr "Refactor database connection logic" --verbose`) to display detailed debug output during execution.
+   Simply add the **--verbose** flag to any command (e.g., `k change "Refactor database connection logic" --verbose`) to display detailed debug output during execution.
 
 7. **Implement Changeset from Clipboard**
-   Copy a valid JSON changeset (like the one generated by `k pr`) to your clipboard, then run:
+   Copy a valid JSON changeset (like the one generated by `k change`) to your clipboard, then run:
    `k implement --verbose`
    This command reads the changeset from the clipboard and applies the file additions, modifications, and removals to your project. Use the **--verbose** flag for detailed output.
 
