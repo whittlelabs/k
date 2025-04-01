@@ -16,11 +16,11 @@ class CopySchemaUseCase:
         """
         Reads the schema file and copies its content to the clipboard.
         """
-        project_root = find_project_root()
-        if not project_root:
-            print("Project root not found. Please run 'k init' first.")
+        K_PATH = os.getenv("K_PATH")
+        if not K_PATH:
+            print("K_PATH not set.")
             return
-        schema_path = os.path.join(project_root, "infrastructure", "agency", "openapi_changeset_schema.json")
+        schema_path = os.path.join(K_PATH, "infrastructure", "agency", "openapi_changeset_schema.json")
         if not os.path.exists(schema_path):
             print(f"Schema file not found at {schema_path}.")
             return
