@@ -4,12 +4,12 @@ anthropic
 boto3
 faiss-cpu
 google-genai
-langchain
-langchain-community
+langchain>=0.3.23
+langchain-community>=0.3.21
 langchain-openai
 langchain-anthropic
 langchain-google-genai
-langgraph
+langgraph>=0.3.29
 openai
 pathspec
 pydantic
