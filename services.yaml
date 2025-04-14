@@ -209,7 +209,7 @@ services:
     arguments: 
       clipboard: '@pyperclip'
       prompt: '@agency.prompt.code_advice'
-      model_id: 'openai:o3-mini'
+      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
       model_config:
         reasoning_effort: 'high'
     tags:
@@ -221,7 +221,7 @@ services:
     arguments: 
       clipboard: '@pyperclip'
       prompt: '@agency.prompt.changeset'
-      model_id: 'openai:o3-mini'
+      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
       model_config:
         reasoning_effort: 'high'
     tags:
@@ -251,7 +251,7 @@ services:
     arguments: 
       clipboard: '@pyperclip'
       prompt: '@agency.prompt.project_plan'
-      model_id: 'openai:o3-mini'
+      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
       model_config:
         reasoning_effort: 'high'
     tags:
@@ -328,3 +328,8 @@ services:
     class: infrastructure.anthropic.client.AnthropicClient
     arguments:
       api_key: '%ANTHROPIC_API_KEY%'
+      
+  google.client:
+    class: infrastructure.google.client.GoogleClient
+    arguments:
+      api_key: '%GOOGLE_API_KEY%'
