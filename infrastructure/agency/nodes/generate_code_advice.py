@@ -94,9 +94,9 @@ class GenerateCodeAdvice(WorkflowNodeProtocol):
         """
         Formats the human message with prompt, directory tree, and source code.
         """
-        parts = [f"PROMPT: {state['prompt']}"]
+        parts = [f"<prompt>\n{state['prompt']}\n</prompt>"]
         if "directory_tree" in state:
-            parts.append(f"\nDirectory Tree:\n{state['directory_tree']}")
+            parts.append(f"<directory_tree>\n{state['directory_tree']}\n</directory_tree>")
         if "source_code" in state:
-            parts.append(f"\nSource Code:\n{state['source_code']}")
-        return "\n".join(parts)
+            parts.append(f"<source_code>\n{state['source_code']}\n</source_code>")
+        return "\n\n\n".join(parts)

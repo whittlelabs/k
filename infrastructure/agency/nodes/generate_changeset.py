@@ -112,11 +112,11 @@ class GenerateChangeset(WorkflowNodeProtocol):
         """
         Formats the human message with goal, rules, directory tree, and source code.
         """
-        parts = [f"GOAL: {state['prompt']}"]
+        parts = [f"<prompt>\n{state['prompt']}\n</prompt>"]
         if "project_rules" in state and state["project_rules"]:
-            parts.append(f"Project Rules:\n{state['project_rules']}")
+            parts.append(f"<project_rules>\n{state['project_rules']}\n</project_rules>")
         if "directory_tree" in state:
-            parts.append(f"Directory Tree:\n{state['directory_tree']}")
+            parts.append(f"<directory_tree>\n{state['directory_tree']}\n</directory_tree>")
         if "source_code" in state:
-            parts.append(f"Source Code:\n{state['source_code']}")
-        return "\n\n".join(parts)
+            parts.append(f"<source_code>\n{state['source_code']}\n</source_code>")
+        return "\n\n\n".join(parts)
