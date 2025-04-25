@@ -52,6 +52,18 @@ commands:
               columns:
                 - id
               order_by: id
+      google:
+        help: "Get a Google resource"
+        subcommands:
+          models:
+            help: "Get the list of available Google models"
+            target: "@google.client.get_models"
+            print_result: true
+            print_map:
+              format: table
+              columns:
+                - id
+              order_by: id
 
   traceback:
     aliases: ["tb"]

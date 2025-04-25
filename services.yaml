@@ -328,3 +328,9 @@ services:
     class: infrastructure.anthropic.client.AnthropicClient
     arguments:
       api_key: '%ANTHROPIC_API_KEY%'
+      
+  google.client:
+    class: infrastructure.google.client.GoogleClient
+    arguments:
+      api_key: '%GOOGLE_API_KEY%'
+

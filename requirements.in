@@ -3,10 +3,12 @@
 anthropic
 boto3
 faiss-cpu
+google-genai
 langchain
 langchain-community
 langchain-openai
 langchain-anthropic
+langchain-google-genai
 langgraph
 openai
 pathspec
