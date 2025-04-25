@@ -26,7 +26,7 @@ services:
 
   # Use Case: Build Troubleshooting Prompt
   traceback.build_troubleshooting_prompt_use_case:
-    class: application.traceback.use_cases.build_troubleshooting_prompt.BuildTroubleshootingPromptBuilderUseCase
+    class: application.traceback.use_cases.build_troubleshooting_prompt.BuildTroubleshootingPromptUseCase
     arguments: ['@traceback.prompt_builder']
 
   # Use Case: Add Rule
