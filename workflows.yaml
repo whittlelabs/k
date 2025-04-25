@@ -4,10 +4,8 @@ workflows:
     - get_project_path -> load_include_exclude_rules
     - load_include_exclude_rules -> load_file_collection
     - load_file_collection -> load_directory_tree
-    - load_file_collection -> load_source_code
     - load_directory_tree -> generate_code_advice
-    - generate_code_advice -> record_memory
-    - record_memory -> END
+    - generate_code_advice -> END
 
   changeset:
     - START -> get_project_path
@@ -19,8 +17,7 @@ workflows:
     - load_file_collection -> load_source_code
     - load_directory_tree -> generate_changeset
     - load_source_code -> generate_changeset
-    - generate_changeset -> record_memory
-    - record_memory -> implement_changeset
+    - generate_changeset -> implement_changeset
     - implement_changeset -> END
 
   project_plan:
