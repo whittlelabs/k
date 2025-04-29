@@ -8,3 +8,5 @@ terraform.tfstate
 terraform.tfstate.backup
 terraform.tfplan
 .k/memory.txt
+.k/advice_history.json
+.k/changeset_history.json

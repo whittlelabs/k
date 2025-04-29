@@ -206,10 +206,9 @@ services:
   # Node: Generate code advice
   agency.node.generate_code_advice:
     class: infrastructure.agency.nodes.generate_code_advice.GenerateCodeAdvice
-    arguments: 
+    arguments:
       clipboard: '@pyperclip'
-      prompt: '@agency.prompt.code_advice'
-      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
+      model_id: 'openai:o4-mini'
       model_config:
         reasoning_effort: 'high'
     tags:
@@ -218,20 +217,25 @@ services:
   # Node: Generate changeset
   agency.node.generate_changeset:
     class: infrastructure.agency.nodes.generate_changeset.GenerateChangeset
-    arguments: 
+    arguments:
       clipboard: '@pyperclip'
-      prompt: '@agency.prompt.changeset'
-      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
+      model_id: 'openai:o4-mini'
       model_config:
         reasoning_effort: 'high'
     tags:
       - { name: workflow_node, alias: generate_changeset }
 
-  # Node: Record Memory
-  agency.node.record_memory:
-    class: infrastructure.agency.nodes.record_memory.RecordMemory
+  # Node: Record Changeset
+  agency.node.record_changeset:
+    class: infrastructure.agency.nodes.record_changeset.RecordChangeset
     tags:
-      - { name: workflow_node, alias: record_memory }
+      - { name: workflow_node, alias: record_changeset }
+
+  # Node: Record Advice
+  agency.node.record_advice:
+    class: infrastructure.agency.nodes.record_advice.RecordAdvice
+    tags:
+      - { name: workflow_node, alias: record_advice }
 
   # Node: Implement changeset
   agency.node.implement_changeset:
@@ -251,7 +255,7 @@ services:
     arguments: 
       clipboard: '@pyperclip'
       prompt: '@agency.prompt.project_plan'
-      model_id: 'google_genai:models/gemini-2.5-pro-exp-03-25'
+      model_id: 'openai:o4-mini'
       model_config:
         reasoning_effort: 'high'
     tags:
